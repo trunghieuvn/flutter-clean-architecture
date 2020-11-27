@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../widgets/auth_hide_keyboard.dart';
+import '../../../widgets/loading_widget.dart';
 import 'bloc/home_bloc.dart';
 
 class HomePage extends StatefulWidget {
@@ -22,26 +22,46 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return AutoHideKeyboard(
-      child: BlocBuilder<HomeBloc, HomeState>(
-        cubit: homeBloc,
-        builder: (context, state) {
-          if (state is LoadDataStoreSuccess) {
-            final records = state.dataStoreModel.result.records;
-            return ListView.builder(
-              padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 8),
-              itemBuilder: (context, index) => Card(
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: Text(records[index].volume_of_mobile_data.toString()),
-                ),
-              ),
-              itemCount: records.length,
+    return BlocBuilder<HomeBloc, HomeState>(
+      cubit: homeBloc,
+      builder: (context, state) {
+        if (state is LoadDataStoreSuccess) {
+          final records = state.records;
+
+          if (records?.isEmpty ?? true) {
+            return const Center(
+              child: Text('Data Empty'),
             );
           }
-          return const Center(child: CupertinoActivityIndicator());
-        },
-      ),
+          return ListView.builder(
+            padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+            itemBuilder: (context, index) => Card(
+              key: ValueKey('home_card_$index'),
+              color: records[index].decrease
+                  ? Colors.white
+                  : Colors.red.withAlpha(100),
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(records[index].volume_of_mobile_data.toString()),
+                    if (!records[index].decrease)
+                      const Icon(
+                        Icons.format_indent_decrease_sharp,
+                        color: Colors.red,
+                      ),
+                  ],
+                ),
+              ),
+            ),
+            itemCount: records.length,
+          );
+        }
+        return const LoadingWidget(
+          key: ValueKey('home_LoadingWidget'),
+        );
+      },
     );
   }
 }

@@ -1,0 +1,10 @@
+import 'package:mockito/mockito.dart';
+import 'package:singapore_mobile_networks/data/datasources/remote/gov_api.dart';
+import 'package:singapore_mobile_networks/presentation/features/main/home/bloc/home_bloc.dart';
+import 'package:singapore_mobile_networks/presentation/features/main/home/interactor/home_interactor.dart';
+
+class GovApiMock extends Mock implements GovApi {}
+
+class HomeBlocMock extends Mock implements HomeBloc {}
+
+class HomInteractorMock extends Mock implements HomeInteractor {}

@@ -6,9 +6,8 @@ abstract class HomeState {}
 class HomeInitial extends HomeState {}
 
 class LoadDataStoreSuccess extends HomeState {
-  final DataStoreModel dataStoreModel;
-
-  LoadDataStoreSuccess(this.dataStoreModel);
+  final List<RecordEntity> records;
+  LoadDataStoreSuccess(this.records);
 }
 
 class LoadDataStoreError extends HomeState {

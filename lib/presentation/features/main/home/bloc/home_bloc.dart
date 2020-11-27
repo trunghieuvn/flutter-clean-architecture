@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 
-import '../../../../../data/models/data_store_model.dart';
+import '../../../../../data/entities/record_entity.dart';
 import '../interactor/home_interactor.dart';
 
 part 'home_event.dart';
@@ -31,7 +31,9 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       LoadDataStoreEvent event) async* {
     try {
       final data = await interactor.getDataStore(
-          resource_id: 'a807b7ab-6cad-4aa6-87d0-e283a7353a0f', limit: 100);
+        resource_id: 'a807b7ab-6cad-4aa6-87d0-e283a7353a0f',
+        limit: 100,
+      );
       yield LoadDataStoreSuccess(data);
     } catch (error) {
       yield LoadDataStoreError(error.toString());

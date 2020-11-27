@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../../../../data/models/data_store_model.dart';
+import '../../../../../data/entities/record_entity.dart';
 
 abstract class HomeInteractor {
-  Future<DataStoreModel> getDataStore(
+  Future<List<RecordEntity>> getDataStore(
       {@required String resource_id, @required int limit});
 }

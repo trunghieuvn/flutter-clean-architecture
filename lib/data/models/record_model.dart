@@ -20,4 +20,6 @@ class RecordModel {
   factory RecordModel.fromJson(Map<String, dynamic> json) =>
       _$RecordModelFromJson(json);
   Map<String, dynamic> toJson() => _$RecordModelToJson(this);
+
+  String get year => quarter.split('-').first;
 }
