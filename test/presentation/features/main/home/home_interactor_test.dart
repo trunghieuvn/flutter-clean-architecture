@@ -8,13 +8,18 @@ import '../../../../mocks_data/gov_store.dart';
 
 void main() {
   HomeRepository homeRepositoryMock;
+
   setUp(() {
     homeRepositoryMock = HomeRepositoryMock();
   });
+
   group('Should get data success ', () {
     test('description', () async {
       // Given
-      final interactor = HomeInteractorImpl(homeRepository: homeRepositoryMock);
+      final interactor = HomeInteractorImpl(
+        homeRepository: homeRepositoryMock,
+        dataManager: DataManagerMock(),
+      );
       when(homeRepositoryMock.getDataStore(
               resource_id: 'resource_id', limit: 0))
           .thenAnswer((realInvocation) async => dataStoreModelMock);

@@ -1,23 +1,41 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 
 import '../../../../../../common/utils.dart';
+import '../../../../../../data/datasources/local/data_manager.dart';
 import '../../../../../../data/entities/record_entity.dart';
+import '../../../../../../data/models/data_store_model.dart';
 import '../home_interactor.dart';
 import '../home_repository.dart';
 
 class HomeInteractorImpl extends HomeInteractor {
   final HomeRepository homeRepository;
+  final DataManager dataManager;
 
   HomeInteractorImpl({
     @required this.homeRepository,
+    @required this.dataManager,
   });
 
   @override
   Future<List<RecordEntity>> getDataStore(
       {String resource_id, int limit}) async {
+    final localJson = dataManager.getDataStore();
+
+    if (localJson?.isNotEmpty ?? false) {
+      final localData = DataStoreModel.fromJson(jsonDecode(localJson));
+      return handleRecordEntity(localData);
+    }
+
     final data = await homeRepository.getDataStore(
         resource_id: resource_id, limit: limit);
+    dataManager.saveDataStore(jsonEncode(data.toJson()));
 
+    return handleRecordEntity(data);
+  }
+
+  List<RecordEntity> handleRecordEntity(DataStoreModel data) {
     if (data.result.records.isNotEmpty) {
       final records = <RecordEntity>[];
       var current = data.result.records.first;
