@@ -58,9 +58,7 @@ class _HomePageState extends State<HomePage> {
             itemCount: records.length,
           );
         }
-        return const LoadingWidget(
-          key: ValueKey('home_LoadingWidget'),
-        );
+        return LoadingWidget();
       },
     );
   }

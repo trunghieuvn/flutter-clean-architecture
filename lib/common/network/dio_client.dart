@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:dio/dio.dart';
 
 import '../configs/configurations.dart';
@@ -8,9 +7,9 @@ class DioClient {
   static FutureOr<Dio> setup() async {
     final options = BaseOptions(
       responseType: ResponseType.json,
-      validateStatus: (status) {
-        return true;
-      },
+      // validateStatus: (status) {
+      //   return true;
+      // },
       baseUrl: Configurations.baseUrl,
     );
     final dio = Dio(options);

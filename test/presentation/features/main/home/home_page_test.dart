@@ -21,6 +21,23 @@ void main() {
     homeBlocMock.close();
   });
 
+  testWidgets('Should render success LoginScreen with LoadingWidget',
+      (WidgetTester tester) async {
+    // Given
+    final child = BlocProvider(
+      create: (context) => homeBlocMock,
+      child: HomePage(),
+    );
+
+    when(homeBlocMock.state).thenAnswer((_) => HomeInitial());
+
+    // When
+    await tester.pumpWidget(MaterialApp(home: child));
+
+    // Then
+    expect(find.byKey(const ValueKey('home_LoadingWidget')), findsOneWidget);
+  });
+
   testWidgets('Should render success LoginScreen with Empty Data',
       (WidgetTester tester) async {
     // Given
@@ -60,8 +77,7 @@ void main() {
         decrease: false,
       ),
     ];
-    when(homeBlocMock.state)
-        .thenAnswer((realInvocation) => LoadDataStoreSuccess(dataMock));
+    when(homeBlocMock.state).thenAnswer((_) => LoadDataStoreSuccess(dataMock));
 
     // When
     await tester.pumpWidget(
