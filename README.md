@@ -1,16 +1,56 @@
-# singapore_mobile_networks
+# Flutter
 
-A new Flutter application.
+ - Flutter     v1.22 stable
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+# Development 
 
-A few resources to get you started if this is your first Flutter project:
+Visual code Extension: 
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+* View widgets tree: https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer
+* Bloc: https://marketplace.visualstudio.com/items?itemName=FelixAngelov.bloc
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Run
+
+```
+    flutter run --flavor dev
+    flutter run --flavor prod
+```
+
+## Build
+
+```
+    flutter build apk --flavor dev
+    flutter build ios --flavor dev
+```
+
+## Prod
+```
+    flutter build apk --flavor prod
+    flutter build ios --flavor prod
+```
+flutter build appbundle 
+flutter build apk
+## Android SignKey 
+
+```
+    ./gradlew signingReport
+```
+
+## Generate
+
+### Icon
+```
+    flutter pub run flutter_launcher_icons:main
+```
+
+### Model, api retrofit
+```
+    flutter packages pub run build_runner build --delete-conflicting-outputs
+```
+
+# How to run Unit test
+```
+sh run_test.sh
+```
+
