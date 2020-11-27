@@ -29,14 +29,13 @@ Visual code Extension:
     flutter build apk --flavor prod
     flutter build ios --flavor prod
 ```
-flutter build appbundle --target-platform android-arm,android-arm64,android-x64
-flutter build apk --target-platform android-arm,android-arm64,android-x64 --split-per-abi
+flutter build appbundle 
+flutter build apk
 ## Android SignKey 
 
 ```
     ./gradlew signingReport
 ```
-
 
 ## Generate
 
@@ -50,7 +49,7 @@ flutter build apk --target-platform android-arm,android-arm64,android-x64 --spli
     flutter packages pub run build_runner build --delete-conflicting-outputs
 ```
 
-# How to runn Unit test
+# How to run Unit test
 ```
 sh run_test.sh
 ```
