@@ -10,7 +10,7 @@ analyzer:
     # exclude files
     - lib/generated_plugin_registrant.dart
     - lib/**/*.g.dart
-    - lib/data/i18n/*.dart
+    - test/utils/**
   enable-experiment:
     - extension-methods
 

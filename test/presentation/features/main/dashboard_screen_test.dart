@@ -46,5 +46,7 @@ void main() {
     );
 
     // Then
+    expect(
+        find.byKey(const ValueKey('dashboard_IndexedStack')), findsOneWidget);
   });
 }

@@ -19,6 +19,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         title: const Text('Singapore’s mobile networks'),
       ),
       body: IndexedStack(
+        key: const ValueKey('dashboard_IndexedStack'),
         children: widget.pages,
       ),
     );
