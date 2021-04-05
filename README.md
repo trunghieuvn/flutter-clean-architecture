@@ -1,7 +1,9 @@
 # Flutter
-
- - Flutter     v2.0.3
-
+    - Flutter     v2.0.3
+    - Clean Architecture
+    - Presentation impl with MVVM use Bloc
+    - Pipline verify code PR
+    - Unit test > 90%
 
 # Development 
 
@@ -47,6 +49,8 @@ flutter build apk
 ```
     flutter packages pub run build_runner build --delete-conflicting-outputs
 ```
+# Unit test
+![Unit Test](https://github.com/trunghieuvn/flutter-clean-architecture/blob/develop/screenshot/unit-test.png?raw=true)
 
 # How to run Unit test
 ```
