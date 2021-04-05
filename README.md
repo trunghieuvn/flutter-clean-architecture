@@ -1,13 +1,12 @@
 # Flutter
 
- - Flutter     v1.22 stable
+ - Flutter     v2.0.3
 
 
 # Development 
 
 Visual code Extension: 
 
-* View widgets tree: https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer
 * Bloc: https://marketplace.visualstudio.com/items?itemName=FelixAngelov.bloc
 
 ## Run

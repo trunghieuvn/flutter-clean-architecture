@@ -3,8 +3,7 @@ import 'package:mockito/mockito.dart';
 import 'package:singapore_mobile_networks/presentation/features/main/home/interactor/home_repository.dart';
 import 'package:singapore_mobile_networks/presentation/features/main/home/interactor/impl/home_interactor_impl.dart';
 
-import '../../../../mocks.dart';
-import '../../../../mocks_data/gov_store.dart';
+import '../../../../mocks/mocks.dart';
 
 void main() {
   HomeRepository homeRepositoryMock;

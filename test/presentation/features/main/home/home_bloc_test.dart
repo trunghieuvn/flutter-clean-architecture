@@ -6,7 +6,7 @@ import 'package:singapore_mobile_networks/data/entities/record_entity.dart';
 import 'package:singapore_mobile_networks/presentation/features/main/home/bloc/home_bloc.dart';
 import 'package:singapore_mobile_networks/presentation/features/main/home/interactor/home_interactor.dart';
 
-import '../../../../mocks.dart';
+import '../../../../mocks/mocks.dart';
 
 void main() {
   final homeBlocTest = BaseBlocTest<HomeBloc, HomeEvent, HomeState>();

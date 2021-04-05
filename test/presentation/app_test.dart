@@ -9,8 +9,7 @@ import 'package:singapore_mobile_networks/data/datasources/remote/gov_api.dart';
 import 'package:singapore_mobile_networks/env.dart';
 import 'package:singapore_mobile_networks/presentation/app.dart';
 
-import '../mocks.dart';
-import '../mocks_data/gov_store.dart';
+import '../mocks/mocks.dart';
 
 void main() {
   GovApi govApiMock;

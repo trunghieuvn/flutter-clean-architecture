@@ -3,7 +3,7 @@ import 'package:singapore_mobile_networks/data/entities/record_entity.dart';
 import 'package:singapore_mobile_networks/data/models/record_model.dart';
 import 'package:singapore_mobile_networks/data/models/store_result_model.dart';
 
-import '../../mocks_data/gov_store.dart';
+import '../../mocks/mocks.dart';
 
 void main() {
   test('should DataStoreModel convert model success', () {

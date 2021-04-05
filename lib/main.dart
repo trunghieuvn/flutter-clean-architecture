@@ -11,12 +11,12 @@ import 'presentation/app.dart';
 void main() {
   Configurations().setConfigurationValues(environment);
 
-  runZoned(() async {
+  runZonedGuarded(() async {
     WidgetsFlutterBinding.ensureInitialized();
     await Injection.inject();
 
     runApp(Application());
-  }, onError: (Object obj, StackTrace stack) {
+  }, (obj, StackTrace stack) {
     LogUtils.d(' ------ main.dart ------');
     LogUtils.d(obj);
     LogUtils.d(stack);

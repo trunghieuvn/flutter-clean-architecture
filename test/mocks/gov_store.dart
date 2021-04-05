@@ -1,6 +1,6 @@
-// ignore_for_file: prefer_single_quotes, lines_longer_than_80_chars
+part of 'mocks.dart';
 
-import 'package:singapore_mobile_networks/data/models/data_store_model.dart';
+// ignore_for_file: prefer_single_quotes, lines_longer_than_80_chars
 
 final dataStoreModelMock = DataStoreModel.fromJson({
   "help": "https://data.gov.sg/api/3/action/help_show?name=datastore_search",
