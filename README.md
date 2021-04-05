@@ -1,7 +1,9 @@
 # Flutter
-
- - Flutter     v2.0.3
-
+    - Flutter     v2.0.3
+    - Clean Architecture
+    - Presentation impl with MVVM use Bloc
+    - Pipline verify code PR
+    - Unit test > 90%
 
 # Development 
 
