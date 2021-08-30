@@ -1,5 +1,5 @@
 # Flutter
-    - Flutter     v2.0.3
+    - Flutter     v2.2.3
     - Clean Architecture
     - Presentation impl with MVVM use Bloc
     - Pipline verify code PR
@@ -12,6 +12,13 @@
 - Dependency injection: get_it 
 - Network: retrofit 
 - Unit test: Mockito 
+- CI/CD: pipeline lint use github action 
+
+
+## TODO 
+- flavor native 
+- localization
+
 
 # Development 
 
@@ -22,24 +29,18 @@ Visual code Extension:
 ## Run
 
 ```
-    flutter run --flavor dev
-    flutter run --flavor prod
+    flutter run
 ```
 
 ## Build
 
 ```
-    flutter build apk --flavor dev
-    flutter build ios --flavor dev
+    flutter build apk
+    flutter build ios
+    flutter build appbundle 
+
 ```
 
-## Prod
-```
-    flutter build apk --flavor prod
-    flutter build ios --flavor prod
-```
-flutter build appbundle 
-flutter build apk
 ## Android SignKey 
 
 ```
