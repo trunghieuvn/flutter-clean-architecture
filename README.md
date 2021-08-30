@@ -4,6 +4,14 @@
     - Presentation impl with MVVM use Bloc
     - Pipline verify code PR
     - Unit test > 90%
+    
+# Technical architecture components
+- MVVM 
+- Dart rule analyze: pedantic
+- State management: flutter_bloc
+- Dependency injection: get_it 
+- Network: retrofit 
+- Unit test: Mockito 
 
 # Development 
 
