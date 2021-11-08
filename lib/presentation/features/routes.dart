@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../common/constants.dart';
 import '../../common/di/injection/injection.dart';
 import 'login/login_screen.dart';
 import 'main/dashboard/dashboard_screen.dart';
@@ -9,8 +8,11 @@ import 'main/home/bloc/home_bloc.dart';
 import 'main/home/home_page.dart';
 
 class Routes {
+  static const String dashboard = 'dashboard';
+  static const String login = 'login';
+
   static Map<String, WidgetBuilder> _getAll(RouteSettings settings) => {
-        RouteList.dashboard: (context) => DashboardScreen(
+        Routes.dashboard: (context) => DashboardScreen(
               pages: [
                 BlocProvider(
                   create: (context) => getIt<HomeBloc>(),
@@ -18,7 +20,7 @@ class Routes {
                 ),
               ],
             ),
-        RouteList.login: (context) => const LoginScreen(),
+        Routes.login: (context) => const LoginScreen(),
       };
 
   static Route<dynamic> generateRoute(RouteSettings settings) {

@@ -11,7 +11,6 @@ class RecordEntity extends RecordModel {
     required this.decrease,
     this.quarter,
   }) : super(
-          id: 1,
           volumeOfMobileData: volumeOfMobileData,
           quarter: quarter,
         );
