@@ -5,21 +5,21 @@ part 'record_model.g.dart';
 @JsonSerializable()
 class RecordModel {
   RecordModel({
-    this.id,
-    this.volume_of_mobile_data,
-    this.quarter,
+     this.id,
+    required this.volumeOfMobileData,
+     this.quarter,
   });
 
   @JsonKey(name: 'volume_of_mobile_data')
-  final String volume_of_mobile_data;
+  final String volumeOfMobileData;
   @JsonKey(name: 'quarter')
-  final String quarter;
+  final String? quarter;
   @JsonKey(name: '_id')
-  final int id;
+  final int? id;
 
   factory RecordModel.fromJson(Map<String, dynamic> json) =>
       _$RecordModelFromJson(json);
   Map<String, dynamic> toJson() => _$RecordModelToJson(this);
 
-  String get year => quarter.split('-').first;
+  String get year => quarter?.split('-').first ?? '';
 }

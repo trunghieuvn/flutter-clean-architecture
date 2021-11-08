@@ -1,7 +1,5 @@
 import 'dart:convert';
 
-import 'package:flutter/material.dart';
-
 import '../../../../../../common/utils.dart';
 import '../../../../../../data/datasources/local/data_manager.dart';
 import '../../../../../../data/entities/record_entity.dart';
@@ -14,22 +12,23 @@ class HomeInteractorImpl extends HomeInteractor {
   final DataManager dataManager;
 
   HomeInteractorImpl({
-    @required this.homeRepository,
-    @required this.dataManager,
+    required this.homeRepository,
+    required this.dataManager,
   });
 
   @override
   Future<List<RecordEntity>> getDataStore(
-      {String resource_id, int limit}) async {
+      {required String resourceId, required int limit}) async {
     final localJson = dataManager.getDataStore();
 
-    if (localJson?.isNotEmpty ?? false) {
-      final localData = DataStoreModel.fromJson(jsonDecode(localJson));
+    if (localJson.isNotEmpty) {
+      final localData = DataStoreModel.fromJson(
+          jsonDecode(localJson) as Map<String, dynamic>);
       return handleRecordEntity(localData);
     }
 
     final data = await homeRepository.getDataStore(
-        resource_id: resource_id, limit: limit);
+        resourceId: resourceId, limit: limit);
     dataManager.saveDataStore(jsonEncode(data.toJson()));
 
     return handleRecordEntity(data);
@@ -42,19 +41,20 @@ class HomeInteractorImpl extends HomeInteractor {
       var volume = 0.0;
       var decrease = true;
 
+      // ignore: avoid_function_literals_in_foreach_calls
       data.result.records.forEach((element) {
         if (current.year == element.year) {
           decrease = decrease &&
-              double.parse(element.volume_of_mobile_data) >=
-                  double.parse(current.volume_of_mobile_data);
-          volume += double.parse(element.volume_of_mobile_data);
+              double.parse(element.volumeOfMobileData) >=
+                  double.parse(current.volumeOfMobileData);
+          volume += double.parse(element.volumeOfMobileData);
         } else {
           records.add(RecordEntity(
-            volume_of_mobile_data: volume.toString(),
+            volumeOfMobileData: volume.toString(),
             decrease: decrease,
             quarter: element.quarter,
           ));
-          volume = double.parse(element.volume_of_mobile_data);
+          volume = double.parse(element.volumeOfMobileData);
           decrease = true;
         }
         current = element;

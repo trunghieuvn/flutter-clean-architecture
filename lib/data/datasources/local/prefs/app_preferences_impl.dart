@@ -4,12 +4,12 @@ class AppPreferencesImpl extends AppPreferences {
   final SharedPreferences sharedPreferences;
 
   AppPreferencesImpl({
-    @required this.sharedPreferences,
+    required this.sharedPreferences,
   });
 
   @override
   String getDataStore() {
-    return sharedPreferences.getString(AppPreferences.keyDataStore);
+    return sharedPreferences.getString(AppPreferences.keyDataStore) ?? '';
   }
 
   @override

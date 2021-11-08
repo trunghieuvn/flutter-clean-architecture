@@ -10,9 +10,7 @@ DataStoreModel _$DataStoreModelFromJson(Map<String, dynamic> json) {
   return DataStoreModel(
     help: json['help'] as String,
     success: json['success'] as bool,
-    result: json['result'] == null
-        ? null
-        : StoreResultModel.fromJson(json['result'] as Map<String, dynamic>),
+    result: StoreResultModel.fromJson(json['result'] as Map<String, dynamic>),
   );
 }
 

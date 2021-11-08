@@ -15,7 +15,7 @@ void main() {
     WidgetsFlutterBinding.ensureInitialized();
     await Injection.inject();
 
-    runApp(Application());
+    runApp(const Application());
   }, (obj, StackTrace stack) {
     LogUtils.d(' ------ main.dart ------');
     LogUtils.d(obj);

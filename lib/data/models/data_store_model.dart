@@ -7,9 +7,9 @@ part 'data_store_model.g.dart';
 @JsonSerializable()
 class DataStoreModel {
   DataStoreModel({
-    this.help,
-    this.success,
-    this.result,
+    required this.help,
+    required this.success,
+    required this.result,
   });
 
   @JsonKey(name: 'help')

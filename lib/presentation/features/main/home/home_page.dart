@@ -6,6 +6,8 @@ import '../../../widgets/loading_widget.dart';
 import 'bloc/home_bloc.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
+
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -23,12 +25,11 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<HomeBloc, HomeState>(
-      cubit: homeBloc,
       builder: (context, state) {
         if (state is LoadDataStoreSuccess) {
           final records = state.records;
 
-          if (records?.isEmpty ?? true) {
+          if (records.isEmpty) {
             return const Center(
               child: Text('Data Empty'),
             );
@@ -45,7 +46,7 @@ class _HomePageState extends State<HomePage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(records[index].volume_of_mobile_data.toString()),
+                    Text(records[index].volumeOfMobileData.toString()),
                     if (!records[index].decrease)
                       const Icon(
                         Icons.format_indent_decrease_sharp,
@@ -58,7 +59,7 @@ class _HomePageState extends State<HomePage> {
             itemCount: records.length,
           );
         }
-        return LoadingWidget();
+        return const LoadingWidget();
       },
     );
   }

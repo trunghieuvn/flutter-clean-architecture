@@ -14,17 +14,17 @@ class Routes {
               pages: [
                 BlocProvider(
                   create: (context) => getIt<HomeBloc>(),
-                  child: HomePage(),
+                  child: const HomePage(),
                 ),
               ],
             ),
-        RouteList.login: (context) => LoginScreen(),
+        RouteList.login: (context) => const LoginScreen(),
       };
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     final _builder = _getAll(settings)[settings.name];
     return MaterialPageRoute(
-      builder: _builder,
+      builder: _builder!,
       settings: settings,
       fullscreenDialog: false,
     );

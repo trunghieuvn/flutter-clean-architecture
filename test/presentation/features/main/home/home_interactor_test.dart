@@ -1,12 +1,12 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart';
 import 'package:singapore_mobile_networks/presentation/features/main/home/interactor/home_repository.dart';
 import 'package:singapore_mobile_networks/presentation/features/main/home/interactor/impl/home_interactor_impl.dart';
 
 import '../../../../mocks/mocks.dart';
 
 void main() {
-  HomeRepository homeRepositoryMock;
+  HomeRepository? homeRepositoryMock;
 
   setUp(() {
     homeRepositoryMock = HomeRepositoryMock();
@@ -16,19 +16,19 @@ void main() {
     test('description', () async {
       // Given
       final interactor = HomeInteractorImpl(
-        homeRepository: homeRepositoryMock,
+        homeRepository: homeRepositoryMock!,
         dataManager: DataManagerMock(),
       );
-      when(homeRepositoryMock.getDataStore(
-              resource_id: 'resource_id', limit: 0))
-          .thenAnswer((realInvocation) async => dataStoreModelMock);
+      when(() => homeRepositoryMock?.getDataStore(
+          resourceId: 'resource_id',
+          limit: 0)).thenAnswer((realInvocation) async => dataStoreModelMock);
 
       // When
       final result =
-          await interactor.getDataStore(resource_id: 'resource_id', limit: 0);
+          await interactor.getDataStore(resourceId: 'resource_id', limit: 0);
 
       // Then
-      expect(result != null, true);
+      expect(result.isNotEmpty, true);
     });
   });
 }

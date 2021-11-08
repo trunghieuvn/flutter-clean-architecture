@@ -13,7 +13,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final HomeInteractor interactor;
 
   HomeBloc({
-    @required this.interactor,
+    required this.interactor,
   }) : super(HomeInitial());
 
   @override
@@ -22,7 +22,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   ) async* {
     switch (event.runtimeType) {
       case LoadDataStoreEvent:
-        yield* _mapLoadDataStoreEventState(event);
+        yield* _mapLoadDataStoreEventState(event as LoadDataStoreEvent);
         break;
     }
   }
@@ -31,7 +31,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       LoadDataStoreEvent event) async* {
     try {
       final data = await interactor.getDataStore(
-        resource_id: 'a807b7ab-6cad-4aa6-87d0-e283a7353a0f',
+        resourceId: 'a807b7ab-6cad-4aa6-87d0-e283a7353a0f',
         limit: 100,
       );
       yield LoadDataStoreSuccess(data);

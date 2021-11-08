@@ -5,8 +5,8 @@ class Configurations {
   static String _baseUrl = DefaultConfig.baseUrl;
 
   void setConfigurationValues(Map<String, dynamic> value) {
-    _environment = value['environment'] ?? DefaultConfig.environment;
-    _baseUrl = value['baseUrl'] ?? DefaultConfig.baseUrl;
+    _environment = value['environment'] as String;
+    _baseUrl = value['baseUrl'] as String;
   }
 
   static String get environment => _environment;

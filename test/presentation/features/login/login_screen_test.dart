@@ -7,7 +7,7 @@ void main() {
   testWidgets('Should render success LoginScreen', (WidgetTester tester) async {
     // Build our app and trigger a frame.
     await tester.pumpWidget(
-      MaterialApp(
+      const MaterialApp(
         home: LoginScreen(),
       ),
     );

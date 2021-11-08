@@ -1,8 +1,7 @@
-@TestOn('vm')
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart';
 
 import 'package:singapore_mobile_networks/data/entities/record_entity.dart';
 import 'package:singapore_mobile_networks/presentation/features/main/home/bloc/home_bloc.dart';
@@ -11,25 +10,25 @@ import 'package:singapore_mobile_networks/presentation/features/main/home/home_p
 import '../../../../mocks/mocks.dart';
 
 void main() {
-  HomeBloc homeBlocMock;
+  HomeBloc? homeBlocMock;
 
   setUp(() async {
     homeBlocMock = HomeBlocMock();
   });
 
   tearDown(() {
-    homeBlocMock.close();
+    homeBlocMock?.close();
   });
 
   testWidgets('Should render success LoginScreen with LoadingWidget',
       (WidgetTester tester) async {
     // Given
-    final child = BlocProvider(
-      create: (context) => homeBlocMock,
-      child: HomePage(),
+    final child = BlocProvider<HomeBloc>(
+      create: (context) => homeBlocMock!,
+      child: const HomePage(),
     );
 
-    when(homeBlocMock.state).thenAnswer((_) => HomeInitial());
+    when(() => homeBlocMock?.state).thenAnswer((_) => HomeInitial());
 
     // When
     await tester.pumpWidget(MaterialApp(home: child));
@@ -41,12 +40,12 @@ void main() {
   testWidgets('Should render success LoginScreen with Empty Data',
       (WidgetTester tester) async {
     // Given
-    final child = BlocProvider(
-      create: (context) => homeBlocMock,
-      child: HomePage(),
+    final child = BlocProvider<HomeBloc>(
+      create: (context) => homeBlocMock!,
+      child: const HomePage(),
     );
 
-    when(homeBlocMock.state).thenAnswer(
+    when(() => homeBlocMock?.state).thenAnswer(
         (realInvocation) => LoadDataStoreSuccess(const <RecordEntity>[]));
 
     // When
@@ -63,21 +62,22 @@ void main() {
   testWidgets('Should render success LoginScreen with ListView Data',
       (WidgetTester tester) async {
     // Given
-    final child = BlocProvider(
-      create: (context) => homeBlocMock,
-      child: HomePage(),
+    final child = BlocProvider<HomeBloc>(
+      create: (context) => homeBlocMock!,
+      child: const HomePage(),
     );
     final dataMock = [
       RecordEntity(
-        volume_of_mobile_data: '0.1',
+        volumeOfMobileData: '0.1',
         decrease: true,
       ),
       RecordEntity(
-        volume_of_mobile_data: '0.1',
+        volumeOfMobileData: '0.1',
         decrease: false,
       ),
     ];
-    when(homeBlocMock.state).thenAnswer((_) => LoadDataStoreSuccess(dataMock));
+    when(() => homeBlocMock?.state)
+        .thenAnswer((_) => LoadDataStoreSuccess(dataMock));
 
     // When
     await tester.pumpWidget(
