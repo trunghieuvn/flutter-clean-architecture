@@ -1,25 +1,36 @@
-name: Dart CI
+name: Flutter Pipeline
 
 on:
   pull_request:
-    branches: [ develop ]
-
+    branches: [develop]
 jobs:
-  lint:
-    # This job will run on ubuntu virtual machine
-    runs-on: macos-latest
+  lint_test:
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      # Setup Java environment in order to build the Android app.
-      # - uses: actions/setup-java@v1
-      #   with:
-      #     java-version: '12.x'
-
-      # Setup the flutter environment.
       - uses: subosito/flutter-action@v1
         with:
           channel: "stable" # 'dev', 'alpha', default to: 'stable'
-      # Get flutter dependencies.
       - run: flutter pub get
       - run: flutter analyze
       - run: flutter test
+
+  build_ios:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: subosito/flutter-action@v1
+        with:
+          channel: "stable" # 'dev', 'alpha', default to: 'stable'
+      - run: flutter pub get
+      - run: flutter build ios --no-codesign
+
+  build_apk:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: subosito/flutter-action@v1
+        with:
+          channel: "stable" # 'dev', 'alpha', default to: 'stable'
+      - run: flutter pub get
+      - run: flutter build apk
