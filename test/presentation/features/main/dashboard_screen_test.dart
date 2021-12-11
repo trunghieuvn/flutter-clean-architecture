@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:singapore_mobile_networks/common/di/injection/injection.dart';
+import 'package:singapore_mobile_networks/components/di/injection/injection.dart';
 import 'package:singapore_mobile_networks/data/datasources/remote/gov_api.dart';
 import 'package:singapore_mobile_networks/presentation/features/main/dashboard/dashboard_screen.dart';
 import 'package:singapore_mobile_networks/presentation/features/main/home/bloc/home_bloc.dart';

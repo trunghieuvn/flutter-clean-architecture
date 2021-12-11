@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../common/di/injection/injection.dart';
+import '../../components/di/injection/injection.dart';
 import 'login/login_screen.dart';
 import 'main/dashboard/dashboard_screen.dart';
 import 'main/home/bloc/home_bloc.dart';

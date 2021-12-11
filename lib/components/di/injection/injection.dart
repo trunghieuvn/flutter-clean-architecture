@@ -7,6 +7,10 @@ import '../modules/repository_module.dart';
 
 GetIt getIt = GetIt.instance;
 
+abstract class DIModule {
+  void provides();
+}
+
 class Injection {
   static Future<void> inject() async {
     await ComponentsModule().provides();

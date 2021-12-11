@@ -1,5 +1,4 @@
 import '../../../data/datasources/remote/gov_api.dart';
-import '../../base.dart';
 import '../../network/dio_client.dart';
 import '../injection/injection.dart';
 

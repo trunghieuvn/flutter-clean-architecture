@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import '../../../../../../common/utils.dart';
+import '../../../../../../configurations/configurations.dart';
 import '../../../../../../data/datasources/local/data_manager.dart';
 import '../../../../../../data/entities/record_entity.dart';
 import '../../../../../../data/models/data_store_model.dart';
@@ -27,8 +27,8 @@ class HomeInteractorImpl extends HomeInteractor {
       return handleRecordEntity(localData);
     }
 
-    final data = await homeRepository.getDataStore(
-        resourceId: resourceId, limit: limit);
+    final data =
+        await homeRepository.getDataStore(resourceId: resourceId, limit: limit);
     dataManager.saveDataStore(jsonEncode(data.toJson()));
 
     return handleRecordEntity(data);

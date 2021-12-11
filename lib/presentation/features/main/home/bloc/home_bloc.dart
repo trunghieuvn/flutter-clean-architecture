@@ -14,29 +14,20 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
   HomeBloc({
     required this.interactor,
-  }) : super(HomeInitial());
-
-  @override
-  Stream<HomeState> mapEventToState(
-    HomeEvent event,
-  ) async* {
-    switch (event.runtimeType) {
-      case LoadDataStoreEvent:
-        yield* _mapLoadDataStoreEventState(event as LoadDataStoreEvent);
-        break;
-    }
+  }) : super(HomeInitial()) {
+    on<LoadDataStoreEvent>(_mapLoadDataStoreEventState);
   }
 
-  Stream<HomeState> _mapLoadDataStoreEventState(
-      LoadDataStoreEvent event) async* {
+  Future<void> _mapLoadDataStoreEventState(
+      LoadDataStoreEvent event, Emitter<HomeState> emit) async {
     try {
       final data = await interactor.getDataStore(
         resourceId: 'a807b7ab-6cad-4aa6-87d0-e283a7353a0f',
         limit: 100,
       );
-      yield LoadDataStoreSuccess(data);
+      emit(LoadDataStoreSuccess(data));
     } catch (error) {
-      yield LoadDataStoreError(error.toString());
+      emit( LoadDataStoreError(error.toString()));
     }
   }
 }
