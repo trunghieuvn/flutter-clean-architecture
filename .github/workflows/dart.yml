@@ -4,7 +4,7 @@ on:
   pull_request:
     branches: [develop]
 jobs:
-  lint_test:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -13,17 +13,16 @@ jobs:
           channel: "stable" # 'dev', 'alpha', default to: 'stable'
       - run: flutter pub get
       - run: flutter analyze
-      - run: flutter test
 
-  build_ios:
-    runs-on: macos-latest
+  test:
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
       - uses: subosito/flutter-action@v1
         with:
           channel: "stable" # 'dev', 'alpha', default to: 'stable'
       - run: flutter pub get
-      - run: flutter build ios --no-codesign
+      - run: flutter test
 
   build_apk:
     runs-on: ubuntu-latest
@@ -34,3 +33,13 @@ jobs:
           channel: "stable" # 'dev', 'alpha', default to: 'stable'
       - run: flutter pub get
       - run: flutter build apk
+
+  build_ios:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: subosito/flutter-action@v1
+        with:
+          channel: "stable" # 'dev', 'alpha', default to: 'stable'
+      - run: flutter pub get
+      - run: flutter build ios --no-codesign

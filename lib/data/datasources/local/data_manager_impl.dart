@@ -4,7 +4,7 @@ class DataManagerImpl extends DataManager {
   final AppPreferences appPreferences;
 
   DataManagerImpl({
-    @required this.appPreferences,
+    required this.appPreferences,
   });
 
   @override

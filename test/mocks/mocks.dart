@@ -1,10 +1,10 @@
-import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart';
 import 'package:singapore_mobile_networks/data/datasources/local/data_manager.dart';
 import 'package:singapore_mobile_networks/data/datasources/remote/gov_api.dart';
+import 'package:singapore_mobile_networks/data/models/data_store_model.dart';
 import 'package:singapore_mobile_networks/presentation/features/main/home/bloc/home_bloc.dart';
 import 'package:singapore_mobile_networks/presentation/features/main/home/interactor/home_interactor.dart';
 import 'package:singapore_mobile_networks/presentation/features/main/home/interactor/home_repository.dart';
-import 'package:singapore_mobile_networks/data/models/data_store_model.dart';
 
 part 'gov_store.dart';
 

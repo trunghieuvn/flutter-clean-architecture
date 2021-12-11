@@ -8,19 +8,18 @@ part of 'store_result_model.dart';
 
 StoreResultModel _$StoreResultModelFromJson(Map<String, dynamic> json) {
   return StoreResultModel(
-    resource_id: json['resource_id'] as String,
-    records: (json['records'] as List)
-        ?.map((e) =>
-            e == null ? null : RecordModel.fromJson(e as Map<String, dynamic>))
-        ?.toList(),
-    limit: json['limit'] as int,
-    total: json['total'] as int,
+    resourceId: json['resource_id'] as String,
+    records: (json['records'] as List<dynamic>)
+        .map((e) => RecordModel.fromJson(e as Map<String, dynamic>))
+        .toList(),
+    limit: json['limit'] as int?,
+    total: json['total'] as int?,
   );
 }
 
 Map<String, dynamic> _$StoreResultModelToJson(StoreResultModel instance) =>
     <String, dynamic>{
-      'resource_id': instance.resource_id,
+      'resource_id': instance.resourceId,
       'records': instance.records,
       'limit': instance.limit,
       'total': instance.total,

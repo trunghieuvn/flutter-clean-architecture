@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:singapore_mobile_networks/common/di/injection/injection.dart';
 import 'package:singapore_mobile_networks/data/datasources/remote/gov_api.dart';
@@ -12,7 +12,7 @@ import 'package:singapore_mobile_networks/presentation/features/main/home/home_p
 import '../../../mocks/mocks.dart';
 
 void main() {
-  GovApi govApiMock;
+  GovApi? govApiMock;
 
   setUp(() async {
     govApiMock = GovApiMock();
@@ -20,7 +20,7 @@ void main() {
     SharedPreferences.setMockInitialValues({});
     await Injection.inject();
     getIt.unregister<GovApi>();
-    getIt.registerSingleton<GovApi>(govApiMock);
+    getIt.registerSingleton<GovApi>(govApiMock!);
   });
 
   testWidgets('Should render success DashboardScreen',
@@ -30,11 +30,11 @@ void main() {
       pages: [
         BlocProvider(
           create: (context) => getIt<HomeBloc>(),
-          child: HomePage(),
+          child: const HomePage(),
         ),
       ],
     );
-    when(govApiMock.getDataStore('resource_id', 0))
+    when(() => govApiMock?.getDataStore('resource_id', 0))
         .thenAnswer((_) async => dataStoreModelMock);
 
     // When

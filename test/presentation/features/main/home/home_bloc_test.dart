@@ -1,5 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart';
 
 import 'package:singapore_mobile_networks/common/base/test/bloc_test.dart';
 import 'package:singapore_mobile_networks/data/entities/record_entity.dart';
@@ -10,8 +10,8 @@ import '../../../../mocks/mocks.dart';
 
 void main() {
   final homeBlocTest = BaseBlocTest<HomeBloc, HomeEvent, HomeState>();
-  HomeBloc homeBloc;
-  HomeInteractor interactor;
+  HomeBloc? homeBloc;
+  late HomeInteractor interactor;
 
   setUp(() {
     interactor = HomInteractorMock();
@@ -26,19 +26,20 @@ void main() {
     homeBlocTest
       ..test(
         'should start with [HomeInitial]',
-        build: () => homeBloc,
-        expect: const <HomeInitial>[],
+        build: () => homeBloc!,
+        expect: () => const <HomeInitial>[],
       )
       ..test(
         'should load data Store success with [LoadDataStoreEvent]',
-        build: () => homeBloc,
+        build: () => homeBloc!,
         act: (HomeBloc bloc) async {
-          when(interactor.getDataStore(resource_id: 'resource_id', limit: 0))
+          when(() =>
+                  interactor.getDataStore(resourceId: 'resource_id', limit: 0))
               .thenAnswer((_) async => <RecordEntity>[]);
 
           bloc.add(LoadDataStoreEvent());
         },
-        expect: <dynamic>[
+        expect: () => <dynamic>[
           isA<LoadDataStoreSuccess>(),
         ],
       );

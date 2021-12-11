@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mockito/mockito.dart';
+import 'package:mocktail/mocktail.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:singapore_mobile_networks/common/configs/configurations.dart';
@@ -12,7 +12,7 @@ import 'package:singapore_mobile_networks/presentation/app.dart';
 import '../mocks/mocks.dart';
 
 void main() {
-  GovApi govApiMock;
+  GovApi? govApiMock;
 
   setUp(() async {
     Configurations().setConfigurationValues(environment);
@@ -21,13 +21,13 @@ void main() {
 
     getIt.unregister<GovApi>();
     govApiMock = GovApiMock();
-    getIt.registerSingleton<GovApi>(govApiMock);
+    getIt.registerSingleton<GovApi>(govApiMock!);
   });
 
   testWidgets('should render application success', (WidgetTester tester) async {
     // Given
-    final child = Application();
-    when(govApiMock.getDataStore('resource_id', 0))
+    const child = Application();
+    when(() => govApiMock?.getDataStore('resource_id', 0))
         .thenAnswer((_) async => dataStoreModelMock);
 
     // When

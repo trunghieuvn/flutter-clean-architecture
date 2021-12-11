@@ -4,8 +4,8 @@ class DashboardScreen extends StatefulWidget {
   final List<Widget> pages;
 
   const DashboardScreen({
-    Key key,
-    @required this.pages,
+    Key? key,
+    required this.pages,
   }) : super(key: key);
   @override
   _DashboardScreenState createState() => _DashboardScreenState();
