@@ -12,6 +12,7 @@ void main() {
 
   runZonedGuarded(() async {
     WidgetsFlutterBinding.ensureInitialized();
+    
     await Injection.inject();
 
     runApp(const Application());
