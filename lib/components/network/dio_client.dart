@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:dio/dio.dart';
 
-import '../configs/configurations.dart';
+import '../../configurations/configurations.dart';
 
 class DioClient {
   static FutureOr<Dio> setup() async {

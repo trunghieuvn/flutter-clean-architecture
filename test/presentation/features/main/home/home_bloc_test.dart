@@ -1,11 +1,11 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
-import 'package:singapore_mobile_networks/common/base/test/bloc_test.dart';
 import 'package:singapore_mobile_networks/data/entities/record_entity.dart';
 import 'package:singapore_mobile_networks/presentation/features/main/home/bloc/home_bloc.dart';
 import 'package:singapore_mobile_networks/presentation/features/main/home/interactor/home_interactor.dart';
 
+import '../../../../helper.dart';
 import '../../../../mocks/mocks.dart';
 
 void main() {

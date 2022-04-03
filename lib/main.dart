@@ -2,9 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-import 'common/configs/configurations.dart';
-import 'common/di/injection/injection.dart';
-import 'common/utils.dart';
+import 'components/di/injection/injection.dart';
+import 'configurations/configurations.dart';
 import 'env.dart';
 import 'presentation/app.dart';
 
@@ -13,6 +12,7 @@ void main() {
 
   runZonedGuarded(() async {
     WidgetsFlutterBinding.ensureInitialized();
+    
     await Injection.inject();
 
     runApp(const Application());

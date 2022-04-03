@@ -12,3 +12,12 @@ class Configurations {
   static String get environment => _environment;
   static String get baseUrl => _baseUrl;
 }
+
+class LogUtils {
+  static void d(dynamic data) {
+    if (Configurations.environment != 'prod') {
+      // ignore: avoid_print
+      print('[${DateTime.now().toUtc()}] ${data?.toString()}');
+    }
+  }
+}

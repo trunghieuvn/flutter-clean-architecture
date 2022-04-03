@@ -1,7 +1,6 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../data/datasources/local/data_manager.dart';
-import '../../base.dart';
 import '../injection/injection.dart';
 
 class ComponentsModule extends DIModule {

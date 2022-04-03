@@ -6,13 +6,11 @@ part of 'record_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-RecordModel _$RecordModelFromJson(Map<String, dynamic> json) {
-  return RecordModel(
-    id: json['_id'] as int?,
-    volumeOfMobileData: json['volume_of_mobile_data'] as String,
-    quarter: json['quarter'] as String?,
-  );
-}
+RecordModel _$RecordModelFromJson(Map<String, dynamic> json) => RecordModel(
+      id: json['_id'] as int?,
+      volumeOfMobileData: json['volume_of_mobile_data'] as String,
+      quarter: json['quarter'] as String?,
+    );
 
 Map<String, dynamic> _$RecordModelToJson(RecordModel instance) =>
     <String, dynamic>{
