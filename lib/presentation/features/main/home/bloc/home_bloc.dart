@@ -27,7 +27,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       );
       emit(LoadDataStoreSuccess(data));
     } catch (error) {
-      emit( LoadDataStoreError(error.toString()));
+      emit(LoadDataStoreError(error.toString()));
     }
   }
 }

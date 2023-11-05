@@ -7,7 +7,8 @@ class ApiModule extends DIModule {
   Future<void> provides() async {
     final dio = await DioClient.setup();
 
-    getIt.registerSingleton(dio);
-    getIt.registerSingleton(GovApi(dio, baseUrl: dio.options.baseUrl));
+    getIt
+      ..registerSingleton(dio)
+      ..registerSingleton(GovApi(dio, baseUrl: dio.options.baseUrl));
   }
 }

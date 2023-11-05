@@ -5,9 +5,9 @@ part 'record_model.g.dart';
 @JsonSerializable()
 class RecordModel {
   RecordModel({
-     this.id,
+    this.id,
     required this.volumeOfMobileData,
-     this.quarter,
+    this.quarter,
   });
 
   @JsonKey(name: 'volume_of_mobile_data')

@@ -8,7 +8,7 @@ class BaseBlocTest<B extends Bloc<E, S>, E, S> {
     required B Function() build,
     Future<void> Function(B bloc)? act,
     Duration? wait,
-     Future<void> Function(B bloc)? verify,
+    Future<void> Function(B bloc)? verify,
     dynamic Function()? expect,
   }) {
     return bloc_test.blocTest<B, S>(

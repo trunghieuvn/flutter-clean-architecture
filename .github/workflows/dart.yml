@@ -13,6 +13,9 @@ jobs:
           channel: "stable" # 'dev', 'alpha', default to: 'stable'
       - run: flutter pub get
       - run: flutter analyze
+      # Check for any formatting issue in the code
+      - name: Check formatting issue
+        run: dart format --set-exit-if-changed .
 
   test:
     runs-on: ubuntu-latest
