@@ -1,0 +1,15 @@
+{
+    "recommendations": [
+        "vscode-icons-team.vscode-icons",
+        "kisstkondoros.vscode-gutter-preview",
+        "felixangelov.bloc",
+        "hzgood.dart-data-class-generator",
+        "dracula-theme.theme-dracula",
+        "usernamehw.errorlens",
+        "dart-code.flutter",
+        "circlecodesolution.ccs-flutter-color",
+        "eamodio.gitlens",
+        "Gruntfuggly.triggertaskonsave",
+        "janisdd.vscode-edit-csv",
+    ]
+}
