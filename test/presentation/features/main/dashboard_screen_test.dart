@@ -19,8 +19,9 @@ void main() {
 
     SharedPreferences.setMockInitialValues({});
     await Injection.inject();
-    getIt.unregister<GovApi>();
-    getIt.registerSingleton<GovApi>(govApiMock!);
+    getIt
+      ..unregister<GovApi>()
+      ..registerSingleton<GovApi>(govApiMock!);
   });
 
   testWidgets('Should render success DashboardScreen',

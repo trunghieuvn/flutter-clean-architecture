@@ -8,11 +8,12 @@ import '../injection/injection.dart';
 class RepositoryModule extends DIModule {
   @override
   Future<void> provides() async {
-    getIt.registerFactory<GovRepository>(() => GovRepositoryImpl(
-          govApi: getIt.get<GovApi>(),
-        ));
-    getIt.registerFactory<HomeRepository>(() => HomeRepositoryImpl(
-          govRepository: getIt.get<GovRepository>(),
-        ));
+    getIt
+      ..registerFactory<GovRepository>(() => GovRepositoryImpl(
+            govApi: getIt.get<GovApi>(),
+          ))
+      ..registerFactory<HomeRepository>(() => HomeRepositoryImpl(
+            govRepository: getIt.get<GovRepository>(),
+          ));
   }
 }
