@@ -40,6 +40,7 @@ void main() {
 
       // When
       appPreferences.saveDataStore(firstData);
+      // ignore: cascade_invocations
       appPreferences.saveDataStore(secondData);
       final result = appPreferences.getDataStore();
 
