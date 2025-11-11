@@ -32,14 +32,14 @@
 		// current file when a language service does not provide its own completions.
 		// This results in code completion suggesting words when editing comments and
 		// strings. This setting will prevent that.
-		"editor.wordBasedSuggestions": false
+		"editor.wordBasedSuggestions": "off"
 	},
 	"editor.codeActionsOnSave": {
-		"source.fixAll": true,
-		"source.organizeImports": true,
-		"quickfix.add.required": true,
-		"quickfix.add.required.multi": true,
-		"quickfix.create.constructorForFinalFields": true
+		"source.fixAll": "explicit",
+		"source.organizeImports": "explicit",
+		"quickfix.add.required": "explicit",
+		"quickfix.add.required.multi": "explicit",
+		"quickfix.create.constructorForFinalFields": "explicit"
 	},
 	"files.associations": {
 		"*.arb": "json"
