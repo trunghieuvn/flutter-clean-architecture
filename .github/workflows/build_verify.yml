@@ -52,6 +52,7 @@ jobs:
           path: |
             ~/.pub-cache
             ${{ github.workspace }}/.dart_tool
+          key: ${{ runner.os }}-pods-${{ hashFiles('**/Podfile.lock') }}
           restore-keys: |
             ${{ runner.os }}-pub-
 
