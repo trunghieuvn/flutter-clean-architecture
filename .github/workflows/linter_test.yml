@@ -1,4 +1,4 @@
-name: Flutter Pipeline
+name: Verify Linter and Run test
 
 on:
   pull_request:
@@ -62,7 +62,7 @@ jobs:
             ${{ runner.os }}-pub-
       - run: flutter pub get
       - run: flutter test --coverage --no-pub
-      
+
       #
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v5
