@@ -1,3 +1,5 @@
+<a href="https://codecov.io/gh/trunghieuvn/flutter-clean-architecture"><img src="https://codecov.io/gh/trunghieuvn/flutter-clean-architecture/branch/develop/graph/badge.svg" alt="codecov"></a>
+
 # Flutter
     - Flutter     v2.2.3
     - Clean Architecture
