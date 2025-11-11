@@ -1,0 +1,62 @@
+name: Flutter Pipeline
+
+on:
+  pull_request:
+    branches: [develop]
+
+# Cancel các workflow cũ khi có build mới
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+# Permissions for creating and pushing tags
+permissions:
+  contents: write
+
+# Environment variables - Configuration
+env:
+  FLUTTER_VERSION: "3.35"
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: "stable" # 'dev', 'alpha', default to: 'stable'
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          cache-key: flutter-${{ env.FLUTTER_VERSION }}-${{ runner.os }}
+          cache: true
+      - name: Cache pub
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.pub-cache
+          restore-keys: |
+            ${{ runner.os }}-pub-
+      - run: flutter pub get
+      - run: flutter analyze
+      # Check for any formatting issue in the code
+      - name: Check formatting issue
+        run: dart format --set-exit-if-changed .
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: "stable" # 'dev', 'alpha', default to: 'stable'
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          cache-key: flutter-${{ env.FLUTTER_VERSION }}-${{ runner.os }}
+          cache: true
+      - name: Cache pub
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.pub-cache
+          restore-keys: |
+            ${{ runner.os }}-pub-
+      - run: flutter pub get
+      - run: flutter test --no-pub
