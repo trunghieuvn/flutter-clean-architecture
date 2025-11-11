@@ -1,12 +1,13 @@
-<a href="https://codecov.io/gh/trunghieuvn/flutter-clean-architecture"><img src="https://codecov.io/gh/trunghieuvn/flutter-clean-architecture/branch/develop/graph/badge.svg" alt="codecov"></a>
-
 # Flutter
-    - Flutter     v2.2.3
+    - Flutter     v3.35
     - Clean Architecture
     - Presentation impl with MVVM use Bloc
     - Pipline verify code PR
     - Unit test > 90%
     
+    codecov: <a href="https://codecov.io/gh/trunghieuvn/flutter-clean-architecture"><img src="https://codecov.io/gh/trunghieuvn/flutter-clean-architecture/branch/develop/graph/badge.svg" alt="codecov"></a>
+
+
 # Technical architecture components
 - MVVM 
 - Dart rule analyze: pedantic
