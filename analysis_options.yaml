@@ -19,7 +19,6 @@ linter:
     - unnecessary_const
     - always_declare_return_types
     - always_put_control_body_on_new_line
-    - always_require_non_null_named_parameters
     - prefer_relative_imports
     - valid_regexps
     - void_checks
@@ -30,10 +29,8 @@ linter:
     - avoid_field_initializers_in_const_classes
     - avoid_init_to_null
     - avoid_null_checks_in_equality_operators
-    - avoid_returning_null
     - avoid_returning_null_for_void
     - avoid_return_types_on_setters
-    - avoid_returning_null_for_future
     - avoid_returning_this
     - avoid_single_cascade_in_expression_statements
     - await_only_futures
@@ -100,7 +97,6 @@ linter:
     - unnecessary_parenthesis
     - unnecessary_this
     - unrelated_type_equality_checks
-    - unsafe_html
     - use_full_hex_values_for_flutter_colors
     - use_rethrow_when_possible
     - use_setters_to_change_properties

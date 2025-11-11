@@ -78,3 +78,6 @@ generated_plugin_registrant.dart
 coverage
 org.eclipse.buildship.core.prefs
 .last_build_id
+ios/Flutter/ephemeral/flutter_lldb_helper.py
+ios/Flutter/ephemeral/flutter_lldbinit
+android/.kotlin

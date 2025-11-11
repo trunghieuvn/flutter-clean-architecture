@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_library_name
+
 library data_manager;
 
 import 'package:shared_preferences/shared_preferences.dart';

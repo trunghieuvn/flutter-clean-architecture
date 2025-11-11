@@ -33,14 +33,30 @@ void main() {
         'should load data Store success with [LoadDataStoreEvent]',
         build: () => homeBloc!,
         act: (HomeBloc bloc) async {
-          when(() =>
-                  interactor.getDataStore(resourceId: 'resource_id', limit: 0))
-              .thenAnswer((_) async => <RecordEntity>[]);
+          when(() => interactor.getDataStore(
+              resourceId: 'a807b7ab-6cad-4aa6-87d0-e283a7353a0f',
+              limit: 100)).thenAnswer((_) async => <RecordEntity>[]);
 
           bloc.add(LoadDataStoreEvent());
         },
+        wait: const Duration(milliseconds: 100),
         expect: () => <dynamic>[
           isA<LoadDataStoreSuccess>(),
+        ],
+      )
+      ..test(
+        'should emit error state when getDataStore fails',
+        build: () => homeBloc!,
+        act: (HomeBloc bloc) async {
+          when(() => interactor.getDataStore(
+              resourceId: 'a807b7ab-6cad-4aa6-87d0-e283a7353a0f',
+              limit: 100)).thenThrow(Exception('Network error'));
+
+          bloc.add(LoadDataStoreEvent());
+        },
+        wait: const Duration(milliseconds: 100),
+        expect: () => <dynamic>[
+          isA<LoadDataStoreError>(),
         ],
       );
   });
