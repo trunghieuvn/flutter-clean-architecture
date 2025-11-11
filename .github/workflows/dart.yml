@@ -21,10 +21,20 @@ jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: subosito/flutter-action@v1
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
         with:
           channel: "stable" # 'dev', 'alpha', default to: 'stable'
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          cache: true
+      - name: Cache pub
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.pub-cache
+          key: ${{ runner.os }}-pub-${{ hashFiles('**/pubspec.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-pub-
       - run: flutter pub get
       - run: flutter analyze
       # Check for any formatting issue in the code
@@ -34,29 +44,80 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: subosito/flutter-action@v1
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
         with:
           channel: "stable" # 'dev', 'alpha', default to: 'stable'
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          cache: true
+      - name: Cache pub
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.pub-cache
+          key: ${{ runner.os }}-pub-${{ hashFiles('**/pubspec.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-pub-
       - run: flutter pub get
-      - run: flutter test
+      - run: flutter test --no-pub
 
   build_apk:
+    needs: [lint, test]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: subosito/flutter-action@v1
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
         with:
           channel: "stable" # 'dev', 'alpha', default to: 'stable'
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          cache: true
+      - name: Cache pub
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.pub-cache
+          key: ${{ runner.os }}-pub-${{ hashFiles('**/pubspec.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-pub-
+      - name: Cache Gradle
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
       - run: flutter pub get
-      - run: flutter build apk
+      - run: flutter build apk --no-pub
 
   build_ios:
+    needs: [lint, test]
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: subosito/flutter-action@v1
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
         with:
           channel: "stable" # 'dev', 'alpha', default to: 'stable'
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          cache: true
+      - name: Cache pub
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.pub-cache
+          key: ${{ runner.os }}-pub-${{ hashFiles('**/pubspec.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-pub-
+      # Optional: Cache CocoaPods to speed up iOS builds if using Pods
+      - name: Cache CocoaPods
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cocoapods
+            ~/Library/Caches/CocoaPods
+          key: ${{ runner.os }}-pods-${{ hashFiles('ios/Podfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-pods-
       - run: flutter pub get
-      - run: flutter build ios --no-codesign
+      - run: flutter build ios --no-codesign --no-pub
