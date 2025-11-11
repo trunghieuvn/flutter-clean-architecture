@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
-
 import 'package:singapore_mobile_networks/data/entities/record_entity.dart';
 import 'package:singapore_mobile_networks/presentation/features/main/home/bloc/home_bloc.dart';
 import 'package:singapore_mobile_networks/presentation/features/main/home/home_page.dart';
@@ -100,7 +99,8 @@ void main() {
     await tester.pumpWidget(MaterialApp(home: child));
     await tester.pump(); // Allow BlocBuilder to rebuild
 
-    // Then - error state should show loading widget (as per current implementation)
+    // Then - error state should show loading widget
+    //(as per current implementation)
     expect(find.byKey(const ValueKey('home_LoadingWidget')), findsOneWidget);
   });
 

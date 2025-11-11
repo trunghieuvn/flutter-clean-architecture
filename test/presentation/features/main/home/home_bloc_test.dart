@@ -34,9 +34,8 @@ void main() {
         build: () => homeBloc!,
         act: (HomeBloc bloc) async {
           when(() => interactor.getDataStore(
-                  resourceId: 'a807b7ab-6cad-4aa6-87d0-e283a7353a0f',
-                  limit: 100))
-              .thenAnswer((_) async => <RecordEntity>[]);
+              resourceId: 'a807b7ab-6cad-4aa6-87d0-e283a7353a0f',
+              limit: 100)).thenAnswer((_) async => <RecordEntity>[]);
 
           bloc.add(LoadDataStoreEvent());
         },
@@ -50,9 +49,8 @@ void main() {
         build: () => homeBloc!,
         act: (HomeBloc bloc) async {
           when(() => interactor.getDataStore(
-                  resourceId: 'a807b7ab-6cad-4aa6-87d0-e283a7353a0f',
-                  limit: 100))
-              .thenThrow(Exception('Network error'));
+              resourceId: 'a807b7ab-6cad-4aa6-87d0-e283a7353a0f',
+              limit: 100)).thenThrow(Exception('Network error'));
 
           bloc.add(LoadDataStoreEvent());
         },

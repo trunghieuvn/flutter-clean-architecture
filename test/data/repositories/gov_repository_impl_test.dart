@@ -1,8 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-
 import 'package:singapore_mobile_networks/data/datasources/remote/gov_api.dart';
-import 'package:singapore_mobile_networks/data/models/data_store_model.dart';
 import 'package:singapore_mobile_networks/data/repositories/gov_repository.dart';
 import 'package:singapore_mobile_networks/data/repositories/impl/gov_repository_impl.dart';
 
@@ -35,4 +33,3 @@ void main() {
     });
   });
 }
-

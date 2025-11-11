@@ -22,7 +22,7 @@ class HomeBlocMock extends Mock implements HomeBloc {
     _stateController.add(_currentState);
     when(() => state).thenAnswer((_) => _currentState);
     when(() => stream).thenAnswer((_) => _stateController.stream);
-    when(() => close()).thenAnswer((_) async {
+    when(close).thenAnswer((_) async {
       await _stateController.close();
     });
   }

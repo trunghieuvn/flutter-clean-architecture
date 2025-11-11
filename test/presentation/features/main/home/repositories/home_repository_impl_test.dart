@@ -1,7 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
-
-import 'package:singapore_mobile_networks/data/models/data_store_model.dart';
 import 'package:singapore_mobile_networks/data/repositories/gov_repository.dart';
 import 'package:singapore_mobile_networks/presentation/features/main/home/interactor/home_repository.dart';
 import 'package:singapore_mobile_networks/presentation/features/main/home/repositories/home_repository_impl.dart';
@@ -23,8 +21,8 @@ void main() {
     test('should get data store from gov repository', () async {
       // Given
       when(() => govRepositoryMock.getDataStore(
-              resourceId: 'resource_id', limit: 100))
-          .thenAnswer((_) async => dataStoreModelMock);
+          resourceId: 'resource_id',
+          limit: 100)).thenAnswer((_) async => dataStoreModelMock);
 
       // When
       final result = await repository.getDataStore(
@@ -35,9 +33,7 @@ void main() {
       // Then
       expect(result, equals(dataStoreModelMock));
       verify(() => govRepositoryMock.getDataStore(
-              resourceId: 'resource_id', limit: 100))
-          .called(1);
+          resourceId: 'resource_id', limit: 100)).called(1);
     });
   });
 }
-

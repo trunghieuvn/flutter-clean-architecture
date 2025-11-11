@@ -1,3 +1,5 @@
+// ignore_for_file: lines_longer_than_80_chars
+
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
@@ -24,8 +26,7 @@ void main() {
         homeRepository: homeRepositoryMock!,
         dataManager: dataManagerMock!,
       );
-      when(() => dataManagerMock?.getDataStore())
-          .thenAnswer((_) => '');
+      when(() => dataManagerMock?.getDataStore()).thenAnswer((_) => '');
       when(() => homeRepositoryMock?.getDataStore(
           resourceId: 'resource_id',
           limit: 0)).thenAnswer((realInvocation) async => dataStoreModelMock);
@@ -47,8 +48,8 @@ void main() {
         homeRepository: homeRepositoryMock!,
         dataManager: dataManagerMock!,
       );
-      when(() => dataManagerMock?.getDataStore())
-          .thenAnswer((_) => '{"help":"","success":true,"result":{"resource_id":"","fields":[],"records":[],"_links":{},"limit":0,"total":0}}');
+      when(() => dataManagerMock?.getDataStore()).thenAnswer((_) =>
+          '{"help":"","success":true,"result":{"resource_id":"","fields":[],"records":[],"_links":{},"limit":0,"total":0}}');
 
       // When
       final result =
@@ -67,11 +68,10 @@ void main() {
         homeRepository: homeRepositoryMock!,
         dataManager: dataManagerMock!,
       );
-      when(() => dataManagerMock?.getDataStore())
-          .thenAnswer((_) => '');
+      when(() => dataManagerMock?.getDataStore()).thenAnswer((_) => '');
       when(() => homeRepositoryMock?.getDataStore(
-              resourceId: 'resource_id', limit: 0))
-          .thenAnswer((_) async => dataStoreModelMock);
+          resourceId: 'resource_id',
+          limit: 0)).thenAnswer((_) async => dataStoreModelMock);
 
       // When
       final result =
@@ -92,8 +92,8 @@ void main() {
       );
       when(() => dataManagerMock?.getDataStore()).thenAnswer((_) => '');
       when(() => homeRepositoryMock?.getDataStore(
-              resourceId: 'resource_id', limit: 0))
-          .thenAnswer((_) async => dataStoreModelMock);
+          resourceId: 'resource_id',
+          limit: 0)).thenAnswer((_) async => dataStoreModelMock);
       when(() => dataManagerMock?.saveDataStore(any())).thenReturn(null);
 
       // When
@@ -106,21 +106,22 @@ void main() {
     test('should correctly identify decrease in volume', () async {
       // Given - create data with decreasing volume
       final decreasingDataJson = {
-        "help": "",
-        "success": true,
-        "result": {
-          "resource_id": "test",
-          "fields": [],
-          "records": [
-            {"volume_of_mobile_data": "1.0", "quarter": "2004-Q1", "_id": 1},
-            {"volume_of_mobile_data": "0.9", "quarter": "2004-Q2", "_id": 2},
-            {"volume_of_mobile_data": "1.1", "quarter": "2005-Q1", "_id": 3},
+        'help': '',
+        'success': true,
+        'result': {
+          'resource_id': 'test',
+          'fields': [],
+          'records': [
+            {'volume_of_mobile_data': '1.0', 'quarter': '2004-Q1', '_id': 1},
+            {'volume_of_mobile_data': '0.9', 'quarter': '2004-Q2', '_id': 2},
+            {'volume_of_mobile_data': '1.1', 'quarter': '2005-Q1', '_id': 3},
           ],
-          "_links": {},
-          "limit": 3,
-          "total": 3
+          '_links': {},
+          'limit': 3,
+          'total': 3
         }
       };
+      // ignore: unused_local_variable
       final decreasingData = DataStoreModel.fromJson(decreasingDataJson);
       final interactor = HomeInteractorImpl(
         homeRepository: homeRepositoryMock!,
@@ -143,17 +144,17 @@ void main() {
     test('should handle single record correctly', () async {
       // Given - Note: single record won't be added due to logic bug, but we test the path
       final singleRecordJson = {
-        "help": "",
-        "success": true,
-        "result": {
-          "resource_id": "test",
-          "fields": [],
-          "records": [
-            {"volume_of_mobile_data": "1.0", "quarter": "2004-Q1", "_id": 1},
+        'help': '',
+        'success': true,
+        'result': {
+          'resource_id': 'test',
+          'fields': [],
+          'records': [
+            {'volume_of_mobile_data': '1.0', 'quarter': '2004-Q1', '_id': 1},
           ],
-          "_links": {},
-          "limit": 1,
-          "total": 1
+          '_links': {},
+          'limit': 1,
+          'total': 1
         }
       };
       final interactor = HomeInteractorImpl(
@@ -175,19 +176,19 @@ void main() {
     test('should handle records with increasing volume correctly', () async {
       // Given - create data with increasing volume across different years
       final increasingDataJson = {
-        "help": "",
-        "success": true,
-        "result": {
-          "resource_id": "test",
-          "fields": [],
-          "records": [
-            {"volume_of_mobile_data": "0.5", "quarter": "2004-Q1", "_id": 1},
-            {"volume_of_mobile_data": "0.6", "quarter": "2004-Q2", "_id": 2},
-            {"volume_of_mobile_data": "0.7", "quarter": "2005-Q1", "_id": 3},
+        'help': '',
+        'success': true,
+        'result': {
+          'resource_id': 'test',
+          'fields': [],
+          'records': [
+            {'volume_of_mobile_data': '0.5', 'quarter': '2004-Q1', '_id': 1},
+            {'volume_of_mobile_data': '0.6', 'quarter': '2004-Q2', '_id': 2},
+            {'volume_of_mobile_data': '0.7', 'quarter': '2005-Q1', '_id': 3},
           ],
-          "_links": {},
-          "limit": 3,
-          "total": 3
+          '_links': {},
+          'limit': 3,
+          'total': 3
         }
       };
       final interactor = HomeInteractorImpl(

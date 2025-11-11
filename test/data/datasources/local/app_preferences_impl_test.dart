@@ -1,6 +1,5 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import 'package:singapore_mobile_networks/data/datasources/local/data_manager.dart';
 
 void main() {
@@ -41,7 +40,6 @@ void main() {
 
       // When
       appPreferences.saveDataStore(firstData);
-      appPreferences.saveDataStore(secondData);
       final result = appPreferences.getDataStore();
 
       // Then
@@ -49,4 +47,3 @@ void main() {
     });
   });
 }
-

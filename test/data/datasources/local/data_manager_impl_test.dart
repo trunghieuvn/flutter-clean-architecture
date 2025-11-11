@@ -31,8 +31,7 @@ void main() {
     test('should save data store to app preferences', () {
       // Given
       const testData = 'test data to save';
-      when(() => appPreferencesMock.saveDataStore(testData))
-          .thenReturn(null);
+      when(() => appPreferencesMock.saveDataStore(testData)).thenReturn(null);
 
       // When
       dataManager.saveDataStore(testData);
@@ -42,4 +41,3 @@ void main() {
     });
   });
 }
-
