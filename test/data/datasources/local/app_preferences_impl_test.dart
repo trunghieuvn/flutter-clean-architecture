@@ -40,6 +40,7 @@ void main() {
 
       // When
       appPreferences.saveDataStore(firstData);
+      appPreferences.saveDataStore(secondData);
       final result = appPreferences.getDataStore();
 
       // Then
