@@ -3,6 +3,20 @@ name: Flutter Pipeline
 on:
   pull_request:
     branches: [develop]
+
+# Cancel các workflow cũ khi có build mới
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+# Permissions for creating and pushing tags
+permissions:
+  contents: write
+
+# Environment variables - Configuration
+env:
+  FLUTTER_VERSION: "3.32.8"
+
 jobs:
   lint:
     runs-on: ubuntu-latest

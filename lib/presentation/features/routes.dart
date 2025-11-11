@@ -24,9 +24,9 @@ class Routes {
       };
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
-    final _builder = _getAll(settings)[settings.name];
+    final builder = _getAll(settings)[settings.name];
     return MaterialPageRoute(
-      builder: _builder!,
+      builder: builder!,
       settings: settings,
       fullscreenDialog: false,
     );
